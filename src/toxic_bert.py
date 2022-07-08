@@ -2,13 +2,14 @@ import torch
 from torch import nn
 from transformers import BertTokenizer, BertModel
 import numpy as np
-import pandas as pd
 
 class Dataset(torch.utils.data.Dataset):
+    '''Класс датасета. Токенизирует входной датафрейм и преобразует лейблы в int64'''
+
     def __init__(self, df, label_name, data_name):
         
         tokenizer = BertTokenizer.from_pretrained('DeepPavlov/rubert-base-cased')
-
+    
         self.labels = [label for label in df[label_name]] 
         self.data = [tokenizer(str(text), 
                                padding='max_length', max_length = 512, truncation=True,
@@ -19,7 +20,7 @@ class Dataset(torch.utils.data.Dataset):
         return len(self.labels)
     
     def __getitem__(self, idx):
-        return self.data[idx], np.array(self.labels[idx])
+        return self.data[idx], np.array(self.labels[idx], dtype=np.int64 )
 
 
 class BertClassifier(nn.Module):
