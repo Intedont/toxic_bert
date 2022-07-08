@@ -6,12 +6,14 @@
 Запустить программу можно путем вызова функции inference() в модуле predict_csv.py или через консоль
 Для запуска через консоль:
 > python -m predict_csv --data_path <Путь к csv файлу с данными> --data_name <название столбца с данными> --label_name <название столбца с метками класса>
+
 (Например python -m predict_csv --data_path data_test_public.csv --data_name comment --label_name toxic)
 Сформированный датафрейм со столбцами предсказаний записывается в файл output.csv
 
 Также написан скрипт в модуле train.py для обучения модели
 Запускается обучение вызовом функции main() или через консоль
 > python -m train --data_path <путь к csv файлу с тренировочным датасетом> --data_name <имя столбца с данными> --label_name <имя столбца с метками класса>
+
 (Например python -m train --data_path data_train.csv --data_name comment --label_name toxic)
 Обученная модель записывается в файлы model.pt и model_dict.pt
 
