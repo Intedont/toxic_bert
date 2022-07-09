@@ -21,7 +21,7 @@ def remove_stopwords(text):
     
     return ans
 
-def preprocess(source_df, data_name: str, label_name: str):
+def preprocess(df, data_name: str, label_name: str):
     '''Функция выполняет минимальную предобработку входного датафрейма
     Данные в столбце ответов label_name приводятся к типу Int
     Из колонки с данными data_name удаляются знаки пунктуации, стоп слова, а также колонка приводится к нижнему регистру
